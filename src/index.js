@@ -1,5 +1,4 @@
 module.exports = function solveSudoku(matrix) {
-  board = matrix;
   let solveSudoku = function (board) {
     const size = 9;
     const boxSize = 3;
@@ -18,21 +17,21 @@ module.exports = function solveSudoku(matrix) {
     const validate = (num, pos, board) => {
       const [r, c] = pos;
 
-      // rows
+      //Check rows
       for (let i = 0; i < size; i++) {
         if (board[i][c] === num && i !== r) {
           return false;
         }
       }
 
-      // cols
+      //Check cols
       for (let i = 0; i < size; i++) {
         if (board[r][i] === num && i !== c) {
           return false;
         }
       }
 
-      // box
+      //Check box
       const boxRow = Math.floor(r / boxSize) * boxSize;
       const boxCol = Math.floor(c / boxSize) * boxSize;
 
@@ -53,11 +52,11 @@ module.exports = function solveSudoku(matrix) {
       if (currPos === null) {
         return true;
       }
-
+      //console.log('------------------------------');
       for (let i = 1; i < size + 1; i++) {
         const currNum = i.toString();
         const isValid = validate(currNum, currPos, board);
-
+        //console.log('currPos ', currPos, 'currNum ',currNum, 'isValid ',isValid);
         if (isValid) {
           const [x, y] = currPos;
           board[x][y] = currNum;
@@ -77,7 +76,5 @@ module.exports = function solveSudoku(matrix) {
     return board;
   };
 
-  let result = solveSudoku(matrix);
-  return result;
+  return solveSudoku(matrix);
 };
-
