@@ -1,4 +1,5 @@
 module.exports = function solveSudoku(matrix) {
+  board = matrix;
   let solveSudoku = function (board) {
     const size = 9;
     const boxSize = 3;
@@ -79,3 +80,4 @@ module.exports = function solveSudoku(matrix) {
   let result = solveSudoku(matrix);
   return result;
 };
+
