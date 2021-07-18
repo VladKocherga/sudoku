@@ -16,21 +16,21 @@ module.exports = function solveSudoku(board) {
   const validate = (num, pos, board) => {
     const [r, c] = pos;
 
-    //Check rows
+    // rows
     for (let i = 0; i < size; i++) {
       if (board[i][c] === num && i !== r) {
         return false;
       }
     }
 
-    //Check cols
+    // cols
     for (let i = 0; i < size; i++) {
       if (board[r][i] === num && i !== c) {
         return false;
       }
     }
 
-    //Check box
+    // box
     const boxRow = Math.floor(r / boxSize) * boxSize;
     const boxCol = Math.floor(c / boxSize) * boxSize;
 
@@ -51,11 +51,11 @@ module.exports = function solveSudoku(board) {
     if (currPos === null) {
       return true;
     }
-    //console.log('------------------------------');
+
     for (let i = 1; i < size + 1; i++) {
-      const currNum = i.toString();
+      const currNum = i;
       const isValid = validate(currNum, currPos, board);
-      //console.log('currPos ', currPos, 'currNum ',currNum, 'isValid ',isValid);
+
       if (isValid) {
         const [x, y] = currPos;
         board[x][y] = currNum;
@@ -74,3 +74,4 @@ module.exports = function solveSudoku(board) {
   solve();
   return board;
 };
+
